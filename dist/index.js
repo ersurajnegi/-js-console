@@ -8,6 +8,9 @@ var JSConsole = /** @class */ (function () {
     JSConsole.prototype.log = function (message) {
         console.log("%c " + message, 'color:red');
     };
+    JSConsole.prototype.alert = function () {
+        alert('HI from Lib');
+    };
     return JSConsole;
 }());
 exports.JSConsole = JSConsole;

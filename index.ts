@@ -6,4 +6,8 @@ export class JSConsole {
     log(message: string) {
         console.log(`%c ${message}`, 'color:red');
     }
+
+    alert() {
+        alert('HI from Lib');
+    }
 }
