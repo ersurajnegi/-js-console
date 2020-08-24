@@ -1,5 +1,5 @@
 {
-  "name": "@js/console",
+  "name": "js-print-console",
   "version": "0.0.1",
   "description": "Console.package",
   "main": "index.js",
