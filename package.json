@@ -1,15 +1,17 @@
 {
   "name": "js-print-console",
-  "version": "0.0.6",
+  "version": "0.0.12",
   "description": "Console.package",
-  "main": "src/index.js",
-  "types": "index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",  
+  "types": "./dist/cjs/index.d.ts",
   "scripts": {
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
     "clear": "node tools/updatePackagejson.js",
-    "publish": "npm version patch && npm run clear && npm run build && cd dist && npm publish"
+    "build-new": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
+    "publish-new": "npm run build-new && npm publish"
   },
   "repository": {
     "type": "git",
@@ -32,6 +34,6 @@
     "typescript": "^4.0.2"
   },
   "files": [
-    "dist/**/*"
+    "dist/"
   ]
 }

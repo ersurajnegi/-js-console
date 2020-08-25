@@ -1,7 +1,7 @@
 export const constants = {
     header: {
-        ['background-color']: '#FFFFFF',
-        ['color']: '#39ac39',
+        ['background-color']: '#000000',
+        ['color']: '#FFFFFF',
         ['font-style']: 'italic',
         ['font-size']: '20px'
     },
