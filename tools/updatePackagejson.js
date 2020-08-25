@@ -6,7 +6,5 @@ del.sync(['./dist//**']);
 const packageJson = JSON.parse(fs.readFileSync('./package.json').toString());
 delete packageJson.devDependencies;
 delete packageJson.scripts;
-
-console.log(packageJson.main);
-
+packageJson.main = "index.js";
 fs.writeFileSync('./dist/package.json', JSON.stringify(packageJson, null, 2));

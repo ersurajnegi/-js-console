@@ -2,14 +2,14 @@
   "name": "js-print-console",
   "version": "0.0.4",
   "description": "Console.package",
-  "main": "index.js",
+  "main": "src/index.js",
   "types": "index.d.ts",
   "scripts": {
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
     "clear": "node tools/updatePackagejson.js",
-    "publish": "npm run clear && npm run build  && cd dist && npm version patch && npm publish"
+    "publish": "npm run clear && npm run build && npm version patch && cd dist && npm publish"
   },
   "repository": {
     "type": "git",
