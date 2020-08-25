@@ -1,4 +1,4 @@
-import { constants } from './default.js';
+import { constants, methodParams } from './default.js';
 
 export class JSConsole {
     defaults: any;
@@ -6,26 +6,55 @@ export class JSConsole {
         this.defaults = constants;
     }
 
-    log(message: string) {
-        console.log(`%c ${message}`, this.getStyleFromObject('log'));
+    log(params: methodParams) {
+        if (this.isParamsValid(params)) {
+            let { message, styles = {} } = params;
+            if (!message) { throw new Error('Message is required!') }
+            styles = this.mergeStyle({ defaults: this.defaults['log'], styles });
+            console.log(`%c ${message}`, this.getStyleFromObject(styles));
+        };
     }
 
-    error(message: string) {
-        console.log(`%c ${message}`, this.getStyleFromObject('error'));
+    error(params: methodParams) {
+        if (this.isParamsValid(params)) {
+            let { message, styles = {} } = params;
+            if (!message) { throw new Error('Message is required!') }
+            styles = this.mergeStyle({ defaults: this.defaults['error'], styles });
+            console.error(`%c ${message}`, this.getStyleFromObject(styles));
+        }
     }
 
-    header(message: string) {
-        console.log(`%c ${message}`, this.getStyleFromObject('header'));
+    header(params: methodParams) {
+        if (this.isParamsValid(params)) {
+            let { message, styles = {} } = params;
+            if (!message) { throw new Error('Message is required!') }
+            styles = this.mergeStyle({ defaults: this.defaults['header'], styles });
+            console.log(`%c ${message}`, this.getStyleFromObject(styles));
+        }
     }
 
-    warn(message: string) {
-        console.log(`%c ${message}`, this.getStyleFromObject('warn'));
+    warn(params: methodParams) {
+        if (this.isParamsValid(params)) {
+            let { message, styles = {} } = params;
+            if (!message) { throw new Error('Message is required!') }
+            styles = this.mergeStyle({ defaults: this.defaults['warn'], styles });
+            console.warn(`%c ${message}`, this.getStyleFromObject(styles));
+        }
     }
 
-    getStyleFromObject(type: string) {
+    mergeStyle(args: any) {
+        let { defaults, styles } = args
+        return Object.assign({}, defaults, styles);
+    }
+
+    isParamsValid(params: methodParams) {
+        if (!params) { throw new Error('No Parameters Passed for Logging') }
+        return true;
+    }
+    getStyleFromObject(styles: any) {
         let style = '';
-        Object.keys(this.defaults[type]).forEach((key) => {
-            style = style + key + ':' + this.defaults[type][key] + ';';
+        Object.keys(styles).forEach((key) => {
+            style = style + key + ':' + styles[key] + ';';
         });
         return style;
     }

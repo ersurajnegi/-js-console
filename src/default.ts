@@ -22,3 +22,7 @@ export const constants = {
     }
 }
 
+export interface methodParams {
+    message: string;
+    styles?: any
+}
